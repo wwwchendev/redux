@@ -3,7 +3,7 @@ const ADD_TASK = 'ADD_TASK';
 const REMOVE_TASK = 'REMOVE_TASK';
 const COMPLETE_TASK = 'COMPLETE_TASK';
 
-// actions
+// normal Redux Action 
 export const addTask = (task) => {
   return {
     type: ADD_TASK,
@@ -27,6 +27,20 @@ export const completeTask = (taskId) => {
     type: COMPLETE_TASK,
     payload: {
       id: taskId
+    }
+  }
+}
+
+// Action with Redux Thunk
+// 透過中間件在action creator 內部進行非同步操作，然後再派發一般的 action 到 reducer，以更新 Redux store 中的狀態。
+export const fetchTodo = (id) => {
+  return async function (dispatch, getState) {
+    try {
+      const result = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      const task = await result.json()
+      dispatch(addTask(task.title))
+    } catch (error) {
+      console.log(error)
     }
   }
 }
