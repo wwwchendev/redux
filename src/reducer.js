@@ -17,6 +17,14 @@ export default function reducer(state = [], action) {
       ];
     case actionTypes.REMOVE_TASK:
       return state.filter(task => task.id !== action.payload.id);
+    case actionTypes.COMPLETE_TASK:
+      return state.map(task => task.id === action.payload.id
+        ? {
+          ...task,
+          completed: true,
+        }
+        : task
+      );
     default:
       return state; // 若 action.type 不符合任何條件，返回原始狀態
   }

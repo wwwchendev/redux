@@ -17,3 +17,12 @@ export const removeTask = (taskId) => {
     }
   }
 }
+
+export const completeTask = (taskId) => {
+  return {
+    type: actionTypes.COMPLETE_TASK,
+    payload: {
+      id: taskId
+    }
+  }
+}
