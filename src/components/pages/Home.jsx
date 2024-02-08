@@ -1,6 +1,6 @@
 import React from 'react'
-import store from "@/store"
-import { addTask, removeTask, completeTask } from '@/actions'
+import store from "@/store/configureStore"
+import { addTask, removeTask, completeTask } from '@/store/tasks'
 
 // 訂閱狀態更新
 const unsubscribe = store.subscribe(() => {
