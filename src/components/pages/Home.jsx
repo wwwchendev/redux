@@ -8,19 +8,19 @@ const unsubscribe = store.subscribe(() => {
 })
 
 // 派發action
-// store.dispatch(addTask('這是一個新任務1'))
-// store.dispatch(completeTask(1))
-// // >>[{"id":1,"task":"這是一個新任務2","completed":false}]
-// // >>[{"id":1,"task":"這是一個新任務2","completed":true}]
+store.dispatch(addTask('這是一個新任務1'))
+store.dispatch(completeTask(1))
+// >>[{"id":1,"task":"這是一個新任務2","completed":false}]
+// >>[{"id":1,"task":"這是一個新任務2","completed":true}]
 
 // 取得狀態
 // console.log(JSON.stringify(store.getState()));
 // 取消訂閱
-// unsubscribe()
+unsubscribe()
 
-// store.dispatch(removeTask(1))
+store.dispatch(removeTask(1))
 // console.log(JSON.stringify(store.getState()));
-// // >>[]
+// >>[]
 
 // 執行非同步處理
 store.dispatch(fetchTodo(4))
