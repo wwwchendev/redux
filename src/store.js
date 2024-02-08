@@ -14,5 +14,18 @@
     ],
     employees: [{...},{...},{...}]
   }
-*/
 
+2.列出可以對store派發的actions //action structure
+  const addTaskAction = {
+    type: 'ADD_TASK',
+    payload: {
+      task: '這是一個新任務' 
+    }       
+  }
+  const removeTaskAction = {
+    type: 'REMOVE_TASK',
+    payload: {
+      id: 1,
+    }    
+  }
+*/
