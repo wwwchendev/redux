@@ -1,5 +1,5 @@
 // App.js
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
