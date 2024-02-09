@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import taskReducer from '@/store/tasks';
 import employeeReducer from '@/store/employees';
-import log from '@/middleware/log';
-import error from '@/middleware/error';
+import log from '@/store/middleware/log';
+import error from '@/store/middleware/error';
 import logger from 'redux-logger';
 
 // @reduxjs/toolkit讓開發者可以直接使用非同步操作而無需額外設定
