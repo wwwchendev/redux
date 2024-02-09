@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// [
+//   {
+//      id: state.length + 1,
+//      task: action.payload.task,
+//      completed: false,
+//   },{...},{...}
+// ]
+
 // 使用createSlice可以同時創建Action和Reducer
 const taskSlice = createSlice({
   name: 'tasks',
