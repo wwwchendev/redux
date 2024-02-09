@@ -26,6 +26,12 @@ store.dispatch(removeEmployee({ id: 1 }));
 // store.dispatch(fetchTodo(2));
 // store.dispatch(fetchTodo(3));
 
+store.dispatch({
+  type: 'SHOW_ERROR', payload: {
+    error: '測試error中間件',
+  },
+});
+
 // 取消訂閱
 // unsubscribe();
 const Home = () => {
