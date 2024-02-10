@@ -31,7 +31,17 @@ import { fetchTasks, getTasks } from '@/store/tasks';
 // gettingTasks();
 
 // 2.使用redux-toolkit的createAsyncThunk呼叫API
-store.dispatch(fetchTasks());
+// store.dispatch(fetchTasks());
+
+// 3.使用自定義的API中間件
+store.dispatch({
+  type: 'apiRequest',
+  payload: {
+    url: '/tasks',
+    onSuccess: 'tasks/getTasks',
+    onError: 'SHOW_ERROR',
+  },
+});
 
 const Home = () => {
   return <div>Home</div>;
