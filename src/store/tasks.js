@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { apiCallBegan } from '@/store/api';
 
 const initialState = {
   tasks: [],
@@ -73,6 +73,22 @@ const taskSlice = createSlice({
   // },
 });
 
-export const { getTasks, addTask, removeTask, completeTask } =
-  taskSlice.actions;
+export const {
+  apiRequested,
+  apiRequestedFailed,
+  getTasks,
+  addTask,
+  removeTask,
+  completeTask,
+} = taskSlice.actions;
 export default taskSlice.reducer;
+
+const url = '/tasks';
+export const loadTasks = () => {
+  return apiCallBegan({
+    url: url,
+    onStart: apiRequested.type,
+    onSuccess: getTasks.type,
+    onError: apiRequestedFailed.type,
+  });
+};

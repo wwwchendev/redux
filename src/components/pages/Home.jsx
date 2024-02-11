@@ -1,5 +1,5 @@
-import axios from '@/utils/http';
 import store from '@/store/configureStore';
+import { loadTasks } from '@/store/tasks';
 
 // import { fetchTasks, getTasks } from '@/store/tasks';
 
@@ -34,15 +34,17 @@ import store from '@/store/configureStore';
 // store.dispatch(fetchTasks());
 
 // 3.使用自定義的API中間件
-store.dispatch({
-  type: 'apiRequest',
-  payload: {
-    url: '/tasks',
-    onStart: 'tasks/apiRequested',
-    onSuccess: 'tasks/getTasks',
-    onError: 'tasks/apiRequestedFailed',
-  },
-});
+store.dispatch(loadTasks());
+
+// store.dispatch({
+//   type: 'apiRequest',
+//   payload: {
+//     url: '/tasks',
+//     onStart: 'tasks/apiRequested',
+//     onSuccess: 'tasks/getTasks',
+//     onError: 'tasks/apiRequestedFailed',
+//   },
+// });
 
 const Home = () => {
   return <div>Home</div>;
