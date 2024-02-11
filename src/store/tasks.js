@@ -47,7 +47,12 @@ const taskSlice = createSlice({
       });
     },
     removeTask: (state, action) => {
-      return state.tasks.filter(task => task.id !== action.payload.id);
+      const index = state.tasks.findIndex(
+        task => task.id === action.payload.id,
+      );
+      if (index !== -1) {
+        state.tasks.splice(index, 1);
+      }
     },
     completeTask: (state, action) => {
       const index = state.tasks.findIndex(
@@ -110,5 +115,13 @@ export const updateCompleted = task =>
     method: 'PATCH',
     data: task,
     onSuccess: completeTask.type,
+    onError: apiRequestedFailed.type,
+  });
+
+export const deleteTask = task =>
+  apiCallBegan({
+    url: `${url}/${task.id}`,
+    method: 'DELETE',
+    onSuccess: removeTask.type,
     onError: apiRequestedFailed.type,
   });
