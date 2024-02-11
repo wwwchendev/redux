@@ -54,7 +54,7 @@ const taskSlice = createSlice({
         task => task.id === action.payload.id,
       );
       if (index !== -1) {
-        state.tasks[index].completed = true;
+        state.tasks[index].completed = action.payload.completed;
       }
     },
   },
@@ -104,3 +104,11 @@ export const addNewTask = task =>
     onError: apiRequestedFailed.type,
   });
 
+export const updateCompleted = task =>
+  apiCallBegan({
+    url: `${url}/${task.id}`,
+    method: 'PATCH',
+    data: task,
+    onSuccess: completeTask.type,
+    onError: apiRequestedFailed.type,
+  });

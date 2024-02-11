@@ -1,5 +1,5 @@
 import store from '@/store/configureStore';
-import { loadTasks, addNewTask } from '@/store/tasks';
+import { loadTasks, addNewTask, updateCompleted } from '@/store/tasks';
 
 // import { fetchTasks, getTasks } from '@/store/tasks';
 
@@ -40,6 +40,13 @@ store.dispatch(
     task: '新的任務',
   }),
 );
+store.dispatch(
+  updateCompleted({
+    id: 6,
+    completed: true,
+  }),
+);
+
 // store.dispatch({
 //   type: 'apiRequest',
 //   payload: {
