@@ -39,6 +39,7 @@ const taskSlice = createSlice({
     },
     // action: function
     addTask: (state, action) => {
+      if (!state.tasks) state.tasks = [];
       state.tasks.push({
         id: state.length + 1,
         task: action.payload.task,
@@ -84,6 +85,7 @@ export const {
 export default taskSlice.reducer;
 
 const url = '/tasks';
+
 export const loadTasks = () => {
   return apiCallBegan({
     url: url,
@@ -92,3 +94,13 @@ export const loadTasks = () => {
     onError: apiRequestedFailed.type,
   });
 };
+
+export const addNewTask = task =>
+  apiCallBegan({
+    url: url,
+    method: 'POST',
+    data: task,
+    onSuccess: addTask.type,
+    onError: apiRequestedFailed.type,
+  });
+

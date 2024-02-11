@@ -1,5 +1,5 @@
 import store from '@/store/configureStore';
-import { loadTasks } from '@/store/tasks';
+import { loadTasks, addNewTask } from '@/store/tasks';
 
 // import { fetchTasks, getTasks } from '@/store/tasks';
 
@@ -35,7 +35,11 @@ import { loadTasks } from '@/store/tasks';
 
 // 3.使用自定義的API中間件
 store.dispatch(loadTasks());
-
+store.dispatch(
+  addNewTask({
+    task: '新的任務',
+  }),
+);
 // store.dispatch({
 //   type: 'apiRequest',
 //   payload: {
